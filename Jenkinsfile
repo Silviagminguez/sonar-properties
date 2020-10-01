@@ -7,7 +7,7 @@ def server_up = false
 
 pipeline {
 	environment{
-		URL_PROPERTIES = "https://github.com/Silviagminguez/sonar-properties.git"
+		GIT_PROJECT = "https://github.com/Silviagminguez/sonar-local.git"
 		scannerHome = tool 'SonarQubeScanner'
 		sonar_properties_workspace = '/C/Jenkins/workspace/sonar/sonar-scanner.properties'	
 	}
@@ -16,6 +16,22 @@ pipeline {
 	agent any
 	//    agent { label "sdk5" }
 	    stages {
+		    
+	stage('Checkout Project') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
+                doGenerateSubmoduleConfigurations: false, 
+                extensions: [], 
+                gitTool: 'default', 
+                submoduleCfg: [], 
+                            userRemoteConfigs: [[
+                            credentialsId: 'GithubCredentials',
+                            url: "$GIT_PROJECT"
+                        ]]
+                ])
+            }
+              
+        }
 		stage('Build') {
 		    steps {
 			bat "./gradlew build"
@@ -46,27 +62,13 @@ pipeline {
 		   }
 		 }*/
 			
-	stage('Checkout Project Sonar Properties') {
-            steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
-                doGenerateSubmoduleConfigurations: false, 
-                extensions: [], 
-                gitTool: 'default', 
-                submoduleCfg: [], 
-                            userRemoteConfigs: [[
-                            credentialsId: 'GithubCredentials',
-                            url: "$URL_PROPERTIES"
-                        ]]
-                ])
-            }
-              
-        }
+	
 
 		    stage('Sonarqube') {
 			
 		    steps {
 			 withSonarQubeEnv('SonarQube') {
-				 bat "${scannerHome}/bin/sonar-scanner -X -Dproject.settings=${sonar_properties_workspace}"
+				 bat "${scannerHome}/bin/sonar-scanner -X -Dproject.settings=/sonar-scanner-wefferent.properties"
 			}
 		   }
 		 }
