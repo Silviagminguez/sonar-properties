@@ -68,7 +68,7 @@ pipeline {
 			
 		    steps {
 			    echo "estoy en***********************************"
-			    bat ls 
+			    bat 'ls' 
 			 withSonarQubeEnv('SonarQube') {
 				 bat "${scannerHome}/bin/sonar-scanner -X -Dproject.settings=sonar-scanner-wefferent.properties"
 			}
