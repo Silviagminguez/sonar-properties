@@ -71,7 +71,7 @@ pipeline {
 			    
 			    bat 'dir' 
 			 withSonarQubeEnv('SonarQube') {
-				 bat "${scannerHome}/bin/sonar-scanner -X -Dproject.settings=sonar-scanner-wefferent.properties"
+				 bat "${scannerHome}/bin/sonar-scanner -X -Dsonar.host.url=https://github.com/Silviagminguez/sonar-properties/blob/master/sonar-scanner-wefferent.properties"
 			}
 		   }
 		 }
