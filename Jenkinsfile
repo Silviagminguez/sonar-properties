@@ -8,6 +8,7 @@ def server_up = false
 pipeline {
 	environment{
 		GIT_PROJECT = "https://github.com/Silviagminguez/sonar-local.git"
+		GIT_PROJECT_PROPERTIES = "https://github.com/Silviagminguez/sonar-properties.git
 		scannerHome = tool 'SonarQubeScanner'
 		sonar_properties_workspace = '/C/Jenkins/workspace/sonar/sonar-scanner.properties'	
 	}
@@ -27,6 +28,21 @@ pipeline {
                             userRemoteConfigs: [[
                             credentialsId: 'GithubCredentials',
                             url: "$GIT_PROJECT"
+                        ]]
+                ])
+            }
+              
+        }
+		    stage('Checkout Project properties') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
+                doGenerateSubmoduleConfigurations: false, 
+                extensions: [], 
+                gitTool: 'default', 
+                submoduleCfg: [], 
+                            userRemoteConfigs: [[
+                            credentialsId: 'GithubCredentials',
+                            url: "$GIT_PROJECT_PROPERTIES"
                         ]]
                 ])
             }
