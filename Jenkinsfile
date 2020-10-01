@@ -8,7 +8,7 @@ def server_up = false
 pipeline {
 	environment{
 		GIT_PROJECT = "https://github.com/Silviagminguez/sonar-local.git"
-		GIT_PROJECT_PROPERTIES = "https://github.com/Silviagminguez/sonar-properties.git
+		GIT_PROJECT_PROPERTIES = "https://github.com/Silviagminguez/sonar-properties.git"
 		scannerHome = tool 'SonarQubeScanner'
 		sonar_properties_workspace = '/C/Jenkins/workspace/sonar/sonar-scanner.properties'	
 	}
