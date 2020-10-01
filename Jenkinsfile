@@ -87,7 +87,7 @@ pipeline {
 			    
 			    bat 'dir' 
 			 withSonarQubeEnv('SonarQube') {
-				 bat "${scannerHome}/bin/sonar-scanner -X -Dproject.settings=sonar-project-properties"
+				 bat "${scannerHome}/bin/sonar-scanner -X -Dproject.settings=sonar-scanner.properties"
 			}
 		   }
 		 }
