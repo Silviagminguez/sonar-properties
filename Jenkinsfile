@@ -17,7 +17,21 @@ pipeline {
 	agent any
 	//    agent { label "sdk5" }
 	    stages {
-		    
+		 stage('Checkout Project properties') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
+                doGenerateSubmoduleConfigurations: false, 
+                extensions: [], 
+                gitTool: 'default', 
+                submoduleCfg: [], 
+                            userRemoteConfigs: [[
+                            credentialsId: 'GithubCredentials',
+                            url: "$GIT_PROJECT_PROPERTIES"
+                        ]]
+                ])
+            }
+              
+        }    
 	stage('Checkout Project') {
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
@@ -33,21 +47,7 @@ pipeline {
             }
               
         }
-		    stage('Checkout Project properties') {
-            steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
-                doGenerateSubmoduleConfigurations: false, 
-                extensions: [], 
-                gitTool: 'default', 
-                submoduleCfg: [], 
-                            userRemoteConfigs: [[
-                            credentialsId: 'GithubCredentials',
-                            url: "$GIT_PROJECT_PROPERTIES"
-                        ]]
-                ])
-            }
-              
-        }
+		   
 		stage('Build') {
 		    steps {
 			bat "./gradlew build"
