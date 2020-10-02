@@ -21,7 +21,7 @@ stages {
             steps {
 		    
             sh 'mkdir  Module1'
-            dir("Module1")
+            sh cd /Module1
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
                 doGenerateSubmoduleConfigurations: false, 
                 extensions: [], 
