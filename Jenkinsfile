@@ -17,25 +17,7 @@ agent any
 	//    agent { label "sdk5" }
 stages {
    
-	stage('Checkout Project properties') {
-            steps {
-	       
-        
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
-                doGenerateSubmoduleConfigurations: false, 
-                extensions: [], 
-                gitTool: 'default', 
-                submoduleCfg: [], 
-                            userRemoteConfigs: [[
-                            credentialsId: 'GithubCredentials',
-                            url: "$GIT_PROJECT_PROPERTIES"
-                        ]]
-                ])
-		        sh 'mkdir  Module2'
-            dir("Module2")
-            }
-	    
-        }    
+	 
 	stage('Checkout Project') {
             steps {
            
@@ -83,7 +65,24 @@ stages {
 		   }
 		 }*/
 			
-	
+	stage('Checkout Project properties') {
+            steps {
+	       
+        
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
+                doGenerateSubmoduleConfigurations: false, 
+                extensions: [], 
+                gitTool: 'default', 
+                submoduleCfg: [], 
+                            userRemoteConfigs: [[
+                            credentialsId: 'GithubCredentials',
+                            url: "$GIT_PROJECT_PROPERTIES"
+                        ]]
+                ])
+		      
+            }
+	    
+        }   
 
 		    stage('Sonarqube') {
 			
