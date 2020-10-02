@@ -34,7 +34,7 @@ stages {
 		//bat 'mkdir properties' 
 		
 		//bat 'dir'
-		bat 'move sonar-scanner.properties C/ProgramData/Jenkins/workspace'
+		bat 'move sonar-scanner.properties /../workspace'
 		//bat 'cd /properties'
 		  // bat'dir'
             }
