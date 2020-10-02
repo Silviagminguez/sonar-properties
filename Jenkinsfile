@@ -43,7 +43,7 @@ stages {
 	stage('Checkout Project') {
             steps {
 	    bat 'mkdir wefferent'
-	    bat ' Icacls /wefferent /F'
+	    bat ' Icacls /wefferent /grant F'
 	    bat 'cd wefferent'
                 checkout([$class: 'GitSCM', branches: [[name: '/master']], 
                 doGenerateSubmoduleConfigurations: false, 
