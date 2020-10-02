@@ -20,8 +20,7 @@ stages {
 	stage('Checkout Project properties') {
             steps {
 	       
-            sh 'mkdir  Module1'
-            dir("Module1")
+        
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
                 doGenerateSubmoduleConfigurations: false, 
                 extensions: [], 
@@ -32,14 +31,15 @@ stages {
                             url: "$GIT_PROJECT_PROPERTIES"
                         ]]
                 ])
+		        sh 'mkdir  Module2'
+            dir("Module2")
             }
 	    
         }    
 	stage('Checkout Project') {
             steps {
-            sh 'mkdir Module2'
-            dir("Module2")
-                checkout([$class: 'GitSCM', branches: [[name: '/master']], 
+           
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
                 doGenerateSubmoduleConfigurations: false, 
                 extensions: [], 
                 gitTool: 'default', 
