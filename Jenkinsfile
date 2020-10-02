@@ -20,7 +20,7 @@ stages {
 	stage('Checkout Project properties') {
             steps {
 		    
-            bat 'mkdir -p Properties'
+            bat 'mkdir Properties'
             dir("Properties")
 		    
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
