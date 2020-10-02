@@ -16,7 +16,7 @@ pipeline {
 agent any
 	//    agent { label "sdk5" }
 stages {
-	stage('Source'){
+   stage('Source'){
 	 parallel{ 
 	stage('Checkout Project properties') {
             steps {
@@ -37,9 +37,6 @@ stages {
         }    
 	stage('Checkout Project') {
             steps {
-	    bat 'mkdir wefferent'
-	    bat ' Icacls /wefferent /grant F'
-	    bat 'cd wefferent'
                 checkout([$class: 'GitSCM', branches: [[name: '/master']], 
                 doGenerateSubmoduleConfigurations: false, 
                 extensions: [], 
