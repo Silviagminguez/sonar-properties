@@ -16,13 +16,11 @@ pipeline {
 agent any
 	//    agent { label "sdk5" }
 stages {
-	
+	 parallel{ 
 	stage('Checkout Project properties') {
             steps {
 		    
-            bat 'mkdir Properties'
-            dir("Properties")
-		    
+		     
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
                 doGenerateSubmoduleConfigurations: false, 
                 extensions: [], 
@@ -34,7 +32,7 @@ stages {
                         ]]
                 ])
             }
-              
+	    
         }    
 	stage('Checkout Project') {
             steps {
@@ -55,7 +53,7 @@ stages {
               
         }
 	
-
+	 }
 		stage('Build') {
 		    steps {
 			bat "./gradlew build"
