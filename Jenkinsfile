@@ -33,7 +33,7 @@ stages {
             }
               
         }    
-	stage('Checkout Project') {
+	/*stage('Checkout Project') {
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
                 doGenerateSubmoduleConfigurations: false, 
@@ -47,7 +47,7 @@ stages {
                 ])
             }
               
-        }
+        }*/
 	
 
 		stage('Build') {
