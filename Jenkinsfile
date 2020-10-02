@@ -16,6 +16,7 @@ pipeline {
 agent any
 	//    agent { label "sdk5" }
 stages {
+	stage('Source'){
 	 parallel{ 
 	stage('Checkout Project properties') {
             steps {
@@ -54,6 +55,7 @@ stages {
         }
 	
 	 }
+	}
 		stage('Build') {
 		    steps {
 			bat "./gradlew build"
