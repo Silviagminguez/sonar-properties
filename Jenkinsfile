@@ -14,10 +14,11 @@ pipeline {
 	}
 	
 	
-	agent any
+agent any
 	//    agent { label "sdk5" }
-	    stages {
-		 stage('Checkout Project properties') {
+stages {
+	
+	stage('Checkout Project properties') {
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
                 doGenerateSubmoduleConfigurations: false, 
@@ -47,7 +48,8 @@ pipeline {
             }
               
         }
-		   
+	
+
 		stage('Build') {
 		    steps {
 			bat "./gradlew build"
