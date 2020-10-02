@@ -31,7 +31,8 @@ stages {
                 ])
 		    
 		    
-		bat 'mkdir properties'    
+		bat 'mkdir properties' 
+		bat 'cacls properties'
 		bat 'dir'
 		bat 'move sonar-scanner.properties /properties'
 		bat 'cd /properties'
