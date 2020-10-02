@@ -34,14 +34,16 @@ stages {
 		//bat 'mkdir properties' 
 		
 		//bat 'dir'
-		bat 'copy sonar-scanner.properties /../workspace'
+		//bat 'copy sonar-scanner.properties /../workspace'
 		//bat 'cd /properties'
 		  // bat'dir'
             }
               
         }    
-	/*stage('Checkout Project') {
+	stage('Checkout Project') {
             steps {
+	    bat 'mkdir wefferent"
+	    bat 'cd /wefferent'
                 checkout([$class: 'GitSCM', branches: [[name: '/master']], 
                 doGenerateSubmoduleConfigurations: false, 
                 extensions: [], 
@@ -54,7 +56,7 @@ stages {
                 ])
             }
               
-        }*/
+        }
 	
 
 		stage('Build') {
