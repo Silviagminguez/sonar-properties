@@ -33,7 +33,7 @@ stages {
 		    
 		bat 'mkdir properties'    
 		bat 'dir'
-		bat 'xcopy sonar-scanner.properties /properties'
+		bat 'xcopy sonar-scanner.properties /properties/sonar-scanner.properties'
             }
               
         }    
