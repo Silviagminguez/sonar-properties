@@ -30,7 +30,16 @@ stages {
                         ]]
                 ])
 		    
-		    
+		  checkout([$class: 'GitSCM', branches: [[name: '/master']], 
+                doGenerateSubmoduleConfigurations: false, 
+                extensions: [], 
+                gitTool: 'default', 
+                submoduleCfg: [], 
+                            userRemoteConfigs: [[
+                            credentialsId: 'GithubCredentials',
+                            url: "$GIT_PROJECT"
+                        ]]
+                ])  
 		//bat 'mkdir properties' 
 		
 		//bat 'dir'
@@ -40,7 +49,7 @@ stages {
             }
               
         }    
-	stage('Checkout Project') {
+	/*stage('Checkout Project') {
             steps {
 	    bat 'mkdir wefferent'
 	    bat ' Icacls /wefferent /grant F'
@@ -57,7 +66,7 @@ stages {
                 ])
             }
               
-        }
+        }*/
 	
 
 		stage('Build') {
