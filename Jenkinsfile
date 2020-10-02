@@ -55,7 +55,7 @@ stages {
 	
 		stage('Build') {
 		    steps {
-			bat "./gradlew build"
+			sh "./gradlew build"
 		    }
 		}
 		stage('Compile') {
@@ -90,9 +90,9 @@ stages {
 		    steps {
 			    echo "estoy en***********************************"
 			    
-			    bat 'dir' 
+			  
 			 withSonarQubeEnv('SonarQube') {
-				 bat "${scannerHome}/bin/sonar-scanner -X -Dproject.settings=sonar-scanner.properties"
+				sh "${scannerHome}/bin/sonar-scanner -X -Dproject.settings=sonar-scanner.properties"
 			}
 		   }
 		 }
