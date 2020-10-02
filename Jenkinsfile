@@ -19,6 +19,10 @@ stages {
 	
 	stage('Checkout Project properties') {
             steps {
+		    
+            bat 'mkdir -p Properties'
+            dir("Properties")
+		    
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
                 doGenerateSubmoduleConfigurations: false, 
                 extensions: [], 
@@ -29,27 +33,10 @@ stages {
                             url: "$GIT_PROJECT_PROPERTIES"
                         ]]
                 ])
-		    
-		  checkout([$class: 'GitSCM', branches: [[name: '/master']], 
-                doGenerateSubmoduleConfigurations: false, 
-                extensions: [], 
-                gitTool: 'default', 
-                submoduleCfg: [], 
-                            userRemoteConfigs: [[
-                            credentialsId: 'GithubCredentials',
-                            url: "$GIT_PROJECT"
-                        ]]
-                ])  
-		//bat 'mkdir properties' 
-		
-		//bat 'dir'
-		//bat 'copy sonar-scanner.properties /../workspace'
-		//bat 'cd /properties'
-		  // bat'dir'
             }
               
         }    
-	/*stage('Checkout Project') {
+	stage('Checkout Project') {
             steps {
 	    bat 'mkdir wefferent'
 	    bat ' Icacls /wefferent /grant F'
@@ -66,7 +53,7 @@ stages {
                 ])
             }
               
-        }*/
+        }
 	
 
 		stage('Build') {
