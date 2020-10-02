@@ -10,7 +10,6 @@ pipeline {
 		GIT_PROJECT = "https://github.com/Silviagminguez/sonar-local.git"
 		GIT_PROJECT_PROPERTIES = "https://github.com/Silviagminguez/sonar-properties.git"
 		scannerHome = tool 'SonarQubeScanner'
-		sonar_properties_workspace = '/C/Jenkins/workspace/sonar/sonar-scanner.properties'	
 	}
 	
 	
@@ -30,6 +29,10 @@ stages {
                             url: "$GIT_PROJECT_PROPERTIES"
                         ]]
                 ])
+		    
+		    
+		bat 'mkdir properties'    
+		    bat 'cp /sonar-scannerproperties /properties'
             }
               
         }    
