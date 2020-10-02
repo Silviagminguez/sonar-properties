@@ -31,12 +31,12 @@ stages {
                 ])
 		    
 		    
-		bat 'mkdir properties' 
-		bat 'Icacls /properties'
-		bat 'dir'
-		bat 'move sonar-scanner.properties /properties'
-		bat 'cd /properties'
-		   bat'dir'
+		//bat 'mkdir properties' 
+		
+		//bat 'dir'
+		bat 'move sonar-scanner.properties C:\ProgramData\Jenkins\workspace'
+		//bat 'cd /properties'
+		  // bat'dir'
             }
               
         }    
