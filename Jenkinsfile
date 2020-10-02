@@ -33,7 +33,7 @@ stages {
 		    
 		bat 'mkdir properties'    
 		bat 'dir'
-		bat 'copy C:\ProgramData\Jenkins\workspace\sonar\sonar-scanner.properties C:\ProgramData\Jenkins\workspace\sonar\properties\sonar-scanner.properties'
+		bat 'copy C:\ProgramData\Jenkins\workspace\sonar\sonar-scanner.properties C:\ProgramData\Jenkins\workspace\sonar\properties'
             }
               
         }    
