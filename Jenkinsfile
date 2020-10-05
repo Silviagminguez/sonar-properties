@@ -64,8 +64,8 @@ stages {
 		stage('Build') {
 		    steps {
 			 
-			    mv /Repo2/Jenkinsfile /Repo1
-			    mv /Repo2/"sonar-scanner.properties" /Repo1
+			  sh  mv /Repo2/Jenkinsfile /Repo1
+			   sh mv /Repo2/"sonar-scanner.properties" /Repo1
 			    
 			sh "./gradlew assembleDebug"
 			   
