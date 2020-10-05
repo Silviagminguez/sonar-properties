@@ -38,13 +38,15 @@ stages {
             }
               
         }
-		stage('Checkout Project properties') {
+	stage('Checkout Project properties') {
             steps {
-	      // sh 'mkdir Properties'
-		dir( 'Properties'){
-		sh 'pwd'
+		    script{
+			    if (!"Properties"){
+				    mkdir "Properties"
+			    }
+		    }
 		    
-        
+		dir( 'Properties'){        
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
                 doGenerateSubmoduleConfigurations: false, 
                 extensions: [], 
