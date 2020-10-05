@@ -28,7 +28,7 @@ stages {
                 gitTool: 'default', 
                 submoduleCfg: [], 
                             userRemoteConfigs: [[
-                            credentialsId: 'c106cc85-55a4-417c-8b33-507cb8ef8fbf',
+                            credentialsId: 'GitCredentials',
                             url: "$GIT_PROJECT"
                         ]]
                 ])
@@ -46,7 +46,7 @@ stages {
                 gitTool: 'default', 
                 submoduleCfg: [], 
                             userRemoteConfigs: [[
-                            credentialsId: 'c106cc85-55a4-417c-8b33-507cb8ef8fbf',
+                            credentialsId: 'GitCredentials',
                             url: "$GIT_PROJECT_PROPERTIES"
                         ]]
                 ])
