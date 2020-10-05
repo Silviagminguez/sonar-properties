@@ -22,8 +22,8 @@ stages {
             steps {
            	sh 'mkdir Repo1'
 		    dir( 'Repo1'){
-			    sh 'pwd'
-		    }
+			    
+		    
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
                 doGenerateSubmoduleConfigurations: false, 
                 extensions: [], 
@@ -34,6 +34,7 @@ stages {
                             url: "$GIT_PROJECT"
                         ]]
                 ])
+		    }
             }
               
         }
@@ -42,7 +43,7 @@ stages {
 	       sh 'mkdir Repo2'
 		dir( 'Repo2'){
 			    sh 'pwd'
-		    }
+		    
         
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
                 doGenerateSubmoduleConfigurations: false, 
@@ -54,6 +55,7 @@ stages {
                             url: "$GIT_PROJECT_PROPERTIES"
                         ]]
                 ])
+		}
 		      
             }
 	    
@@ -61,7 +63,9 @@ stages {
 	
 		stage('Build') {
 		    steps {
+			    dir("Repo2"{
 			sh "./gradlew build"
+			    }
 		    }
 		}
 		stage('Compile') {
