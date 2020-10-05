@@ -69,7 +69,7 @@ stages {
 			  sh  'mv Properties/sonar-scanner.properties sonar-out-properties'
 			  sh 'mv Properties/Jenkinsfile sonar-out-properties'
 			    
-			sh "./gradlew build"
+		//	sh "./gradlew build"
 			   
 		    }
 		}
