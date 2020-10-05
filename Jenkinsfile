@@ -21,7 +21,7 @@ stages {
 	stage('Checkout Project') {
             steps {
            	//sh 'mkdir Repo1'
-		    dir( 'Repo1'){
+		   // dir( 'Repo1'){
 			    
 		    
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
@@ -34,15 +34,15 @@ stages {
                             url: "$GIT_PROJECT"
                         ]]
                 ])
-		    }
+		//    }
             }
               
         }
 		stage('Checkout Project properties') {
             steps {
-	       //sh 'mkdir Repo2'
-		dir( 'Repo2'){
-			    sh 'pwd'
+	       sh 'mkdir Properties'
+		dir( 'Properties'){
+		sh 'pwd'
 		    
         
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
@@ -64,11 +64,10 @@ stages {
 		stage('Build') {
 		    steps {
 			 
-			  sh  'mv Repo2/sonar-scanner.properties Repo1'
-			  sh 'mv Repo2/Jenkinsfile Repo1'
-			    //sh 'cp /Repo2/Jenkinsfile /Repo1'
-			    sh 'pwd'
-			sh "./gradlew assembleDebug"
+			  sh  'mv Properties/sonar-scanner.properties sonar-out-properties'
+			  sh 'mv Properties/Jenkinsfile sonar-out-properties'
+			    
+			sh "./gradlew build"
 			   
 		    }
 		}
