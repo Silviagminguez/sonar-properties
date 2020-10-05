@@ -20,7 +20,7 @@ stages {
 	 
 	stage('Checkout Project') {
             steps {
-           	sh 'mkdir Repo1'
+           	//sh 'mkdir Repo1'
 		    dir( 'Repo1'){
 			    
 		    
@@ -40,7 +40,7 @@ stages {
         }
 		stage('Checkout Project properties') {
             steps {
-	       sh 'mkdir Repo2'
+	       //sh 'mkdir Repo2'
 		dir( 'Repo2'){
 			    sh 'pwd'
 		    
