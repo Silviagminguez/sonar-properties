@@ -20,7 +20,7 @@ stages {
 	 
 	stage('Checkout Project') {
             steps {
-           	sh mkdir "Repo1"
+           	sh 'mkdir Repo1'
 		dir( 'Repo1')
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
                 doGenerateSubmoduleConfigurations: false, 
@@ -37,7 +37,7 @@ stages {
         }
 		stage('Checkout Project properties') {
             steps {
-	       sh mkdir "Repo2"
+	       sh 'mkdir Repo2'
 		dir( 'Repo2')
         
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
