@@ -63,10 +63,10 @@ stages {
 	
 		stage('Build') {
 		    steps {
-			    script{
+			 
 			    mv /Repo2/Jenkinsfile /Repo1
 			    mv /Repo2/"sonar-scanner.properties" /Repo1
-			    }
+			    
 			sh "./gradlew assembleDebug"
 			   
 		    }
