@@ -40,7 +40,7 @@ stages {
         }
 		stage('Checkout Project properties') {
             steps {
-	       sh 'mkdir Properties'
+	      // sh 'mkdir Properties'
 		dir( 'Properties'){
 		sh 'pwd'
 		    
