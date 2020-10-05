@@ -20,7 +20,8 @@ stages {
 	 
 	stage('Checkout Project') {
             steps {
-           
+           	sh mkdir "Repo1"
+		dir( 'Repo1')
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
                 doGenerateSubmoduleConfigurations: false, 
                 extensions: [], 
@@ -34,6 +35,25 @@ stages {
             }
               
         }
+		stage('Checkout Project properties') {
+            steps {
+	       sh mkdir "Repo2"
+		dir( 'Repo2')
+        
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
+                doGenerateSubmoduleConfigurations: false, 
+                extensions: [], 
+                gitTool: 'default', 
+                submoduleCfg: [], 
+                            userRemoteConfigs: [[
+                            credentialsId: 'GithubCredentials',
+                            url: "$GIT_PROJECT_PROPERTIES"
+                        ]]
+                ])
+		      
+            }
+	    
+        } 
 	
 		stage('Build') {
 		    steps {
@@ -65,24 +85,7 @@ stages {
 		   }
 		 }*/
 			
-	stage('Checkout Project properties') {
-            steps {
-	       
-        
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
-                doGenerateSubmoduleConfigurations: false, 
-                extensions: [], 
-                gitTool: 'default', 
-                submoduleCfg: [], 
-                            userRemoteConfigs: [[
-                            credentialsId: 'GithubCredentials',
-                            url: "$GIT_PROJECT_PROPERTIES"
-                        ]]
-                ])
-		      
-            }
-	    
-        }   
+  
 
 		    stage('Sonarqube') {
 			
