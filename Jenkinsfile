@@ -63,7 +63,7 @@ stages {
 	
 		stage('Build') {
 		    steps {
-			    dir("Repo2"{
+			    dir("Repo2"){
 			sh "./gradlew build"
 			    }
 		    }
